@@ -8,6 +8,8 @@ import {generateRecipes, RecipeGenerationOutput} from '@/ai/flows/recipe-generat
 import {toast} from '@/hooks/use-toast';
 import {Icons} from '@/components/icons';
 import {Textarea} from '@/components/ui/textarea';
+import {Avatar, AvatarImage, AvatarFallback} from "@/components/ui/avatar"
+
 
 export default function Home() {
   const [ingredients, setIngredients] = useState('');
@@ -95,6 +97,12 @@ export default function Home() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-2">
+                {recipe.imageUrl && (
+                      <Avatar className="w-24 h-24 mb-4">
+                        <AvatarImage src={recipe.imageUrl} alt={recipe.name} />
+                        <AvatarFallback>{recipe.name}</AvatarFallback>
+                      </Avatar>
+                    )}
                   <h3 className="text-lg font-semibold">Ingredients:</h3>
                   <ul className="list-disc pl-5">
                     {recipe.ingredients.map((ingredient, i) => (

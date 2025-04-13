@@ -1,4 +1,3 @@
-// Recipe Generation Flow
 'use server';
 
 /**
@@ -27,6 +26,7 @@ const RecipeSchema = z.object({
     .describe('A list of ingredients with their quantities.'),
   instructions: z.string().describe('Step-by-step instructions to prepare the recipe.'),
   calories: z.number().optional().describe('The estimated calorie count for the recipe.'),
+  imageUrl: z.string().optional().describe('URL of an image of the prepared recipe'),
 });
 
 const RecipeGenerationOutputSchema = z.object({
@@ -56,7 +56,7 @@ const recipeGenerationPrompt = ai.definePrompt({
 
 Ingredients: {{{ingredients}}}
 
-Generate recipe suggestions with the name, ingredients and instructions.`,
+Generate recipe suggestions with the name, ingredients and instructions. Also include a URL for an image of the recipe.`,
 });
 
 const recipeGenerationFlow = ai.defineFlow<
