@@ -22,9 +22,10 @@ export interface CalorieInfo {
  * @returns A promise that resolves to a CalorieInfo object containing the estimated calories.
  */
 export async function getCalorieInfo(recipe: Recipe): Promise<CalorieInfo> {
-  // TODO: Implement this by calling an API.
+  const apiKey = process.env.CALORIE_CALCULATOR_API_KEY;
+  console.log("API Key:", apiKey);
 
   return {
-    calories: 500,
+    calories: 500, // Placeholder
   };
 }
